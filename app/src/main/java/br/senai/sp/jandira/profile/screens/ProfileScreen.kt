@@ -1,7 +1,9 @@
 package br.senai.sp.jandira.profile.screens
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -11,19 +13,24 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Group
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.PersonAddAlt1
 import androidx.compose.material.icons.filled.Phone
-import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.StarBorder
 import androidx.compose.material.icons.filled.Whatsapp
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.IconButtonColors
 import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -40,18 +47,18 @@ import br.senai.sp.jandira.profile.R
 import br.senai.sp.jandira.profile.components.ProfileSocial
 
 @Composable
-fun ProfileScreen(){
+fun ProfileScreen() {
     Column(
         modifier = Modifier
             .padding(start = 10.dp)
             .fillMaxSize()
             .background(color = Color.White)
-    ){
+    ) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(300.dp)
-        ){
+        ) {
             Image(
                 painter = painterResource(R.drawable.background),
                 contentDescription = "",
@@ -62,14 +69,14 @@ fun ProfileScreen(){
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-            ){
+            ) {
                 Row(
                     modifier = Modifier
                         .padding(top = 10.dp)
-                ){
+                ) {
                     IconButton(
                         onClick = {}
-                    ){
+                    ) {
                         Icon(
                             imageVector = Icons.Default.ArrowBack,
                             contentDescription = "",
@@ -80,7 +87,7 @@ fun ProfileScreen(){
                         modifier = Modifier
                             .padding(start = 70.dp),
                         horizontalAlignment = Alignment.CenterHorizontally
-                    ){
+                    ) {
                         Text(
                             text = "Details",
                             fontSize = 20.sp,
@@ -117,7 +124,7 @@ fun ProfileScreen(){
                         .padding(top = 12.dp)
                         .fillMaxWidth(),
                     horizontalArrangement = Arrangement.Center
-                ){
+                ) {
                     ProfileSocial(
                         icone = Icons.Default.Email,
                         texto = "Email"
@@ -141,11 +148,11 @@ fun ProfileScreen(){
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 20.dp)
-        ){
+        ) {
             Row(
                 modifier = Modifier
                     .padding(start = 15.dp)
-            ){
+            ) {
                 Icon(
                     imageVector = Icons.Default.Email,
                     contentDescription = "",
@@ -164,7 +171,7 @@ fun ProfileScreen(){
             Column(
                 modifier = Modifier
                     .padding(start = 52.dp)
-            ){
+            ) {
                 Text(
                     text = "Official",
                     fontSize = 15.sp,
@@ -202,11 +209,11 @@ fun ProfileScreen(){
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-        ){
+        ) {
             Row(
                 modifier = Modifier
                     .padding(start = 15.dp)
-            ){
+            ) {
                 Icon(
                     imageVector = Icons.Default.Phone,
                     contentDescription = "",
@@ -225,7 +232,7 @@ fun ProfileScreen(){
             Column(
                 modifier = Modifier
                     .padding(start = 52.dp)
-            ){
+            ) {
                 Text(
                     text = "Mobile",
                     fontSize = 15.sp,
@@ -244,53 +251,63 @@ fun ProfileScreen(){
         }
         HorizontalDivider(
             modifier = Modifier
-                .padding(15.dp)
+                .padding(vertical = 10.dp, horizontal = 15.dp)
         )
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-        ){
-            Row(
-                modifier = Modifier
-                    .padding(start = 15.dp)
-            ){
-                Icon(
-                    imageVector = Icons.Default.Group,
-                    contentDescription = "",
-                    tint = Color(0xFF790333),
-                    modifier = Modifier
-                        .size(30.dp)
-                )
-                Text(
-                    text = "Team",
-                    fontSize = 18.sp,
-                    color = Color.Black,
-                    modifier = Modifier
-                        .padding(top = 3.dp, start = 6.dp)
-                )
-            }
+                .padding(bottom = 10.dp)
+                .background(Color.Transparent)
+        ) {
             Row {
                 Column(
                     modifier = Modifier
                         .weight(2f)
-                        .padding(start = 52.dp)
-                ){
-                    Text(
-                        text = "Project Operation Team",
-                        fontSize = 15.sp,
-                        color = Color.Black,
+                ) {
+                    Row(
                         modifier = Modifier
-                            .padding(top = 2.dp)
-                    )
+                            .padding(top = 10.dp, start = 20.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Group,
+                            contentDescription = "",
+                            tint = Color(0xFF790333),
+                            modifier = Modifier
+                                .size(30.dp)
+                        )
+                        Text(
+                            text = "Team",
+                            fontSize = 18.sp,
+                            color = Color.Black,
+                            modifier = Modifier
+                                .padding(top = 3.dp, start = 6.dp)
+                        )
+                    }
+                    Column(
+                        modifier = Modifier
+                            .padding(start = 60.dp, top = 8.dp)
+                    ) {
+                        Text(
+                            text = "Project Operation Team",
+                            fontSize = 15.sp,
+                            color = Color.Black,
+                        )
+                    }
                 }
                 Column(
                     modifier = Modifier
                         .weight(1f)
-                        .background(color = Color.Cyan)
-                ){
+                        .background(Color.Transparent),
+                    horizontalAlignment = Alignment.End,
+                    verticalArrangement = Arrangement.Center
+                ) {
                     IconButton(
                         onClick = {},
-                        colors = IconButtonDefaults.iconButtonColors(Color(0xFF790333))
+                        colors = IconButtonDefaults.iconButtonColors(Color(0xFF790333)),
+                        modifier = Modifier
+                            .padding(top = 20.dp, end = 20.dp)
+                            .size(35.dp)
                     ){
                         Icon(
                             imageVector = Icons.Default.ArrowForward,
@@ -303,8 +320,115 @@ fun ProfileScreen(){
         }
         HorizontalDivider(
             modifier = Modifier
-                .padding(15.dp)
+                .padding(vertical = 10.dp, horizontal = 15.dp)
         )
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 10.dp)
+                .background(Color.Transparent)
+        ) {
+            Row {
+                Column(
+                    modifier = Modifier
+                        .weight(2f)
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .padding(top = 10.dp, start = 20.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Person,
+                            contentDescription = "",
+                            tint = Color(0xFF790333),
+                            modifier = Modifier
+                                .size(30.dp)
+                        )
+                        Text(
+                            text = "Leads by",
+                            fontSize = 18.sp,
+                            color = Color.Black,
+                            modifier = Modifier
+                                .padding(top = 3.dp, start = 6.dp)
+                        )
+                    }
+                    Column(
+                        modifier = Modifier
+                            .padding(start = 60.dp, top = 8.dp)
+                    ) {
+                        Text(
+                            text = "Darrell Steward",
+                            fontSize = 15.sp,
+                            color = Color.Black,
+                        )
+                    }
+                }
+                Column(
+                    modifier = Modifier
+                        .weight(1f)
+                        .background(Color.Transparent),
+                    horizontalAlignment = Alignment.End,
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    IconButton(
+                        onClick = {},
+                        colors = IconButtonDefaults.iconButtonColors(Color(0xFF790333)),
+                        modifier = Modifier
+                            .padding(top = 20.dp, end = 20.dp)
+                            .size(35.dp)
+                    ){
+                        Icon(
+                            imageVector = Icons.Default.ArrowForward,
+                            contentDescription = "",
+                            tint = Color.White
+                        )
+                    }
+                }
+            }
+        }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 25.dp),
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ){
+            Button(
+                onClick = {},
+                border = BorderStroke(
+                    width = 1.dp,
+                    color = Color(0xFF790333)
+                ),
+                colors = ButtonDefaults.buttonColors(Color.White),
+                modifier = Modifier
+                    .width(250.dp)
+                    .fillMaxWidth()
+            ) {
+                Icon(
+                    imageVector = Icons.Default.PersonAddAlt1,
+                    contentDescription = "",
+                    tint = Color(0xFF790333)
+                )
+                Text(
+                    text = "Add to contact",
+                    fontSize = 16.sp,
+                    color = Color(0xFF790333),
+                    modifier = Modifier
+                        .padding(start = 10.dp)
+                )
+            }
+            Button(
+                onClick = {},
+                colors = ButtonDefaults.buttonColors(Color.White),
+                border = BorderStroke(1.dp, Color(0xFF790333))
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Share,
+                    contentDescription = "",
+                    tint = Color(0xFF790333)
+                )
+            }
+        }
     }
 }
 
